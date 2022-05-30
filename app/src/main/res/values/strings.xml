@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DeviceList</string>
+    <string name="text_loading_error">An error did occur while loading data.</string>
+    <string name="default_text">Default</string>
+    <string name="ascending">Ascending</string>
+    <string name="descending">Descending</string>
+</resources>
