@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.himanshu.devicelist">
+    package="com.himanshu.bike_network_list">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -9,10 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.himanshu.devicelist.app.DeviceInformationApp"
+        android:name="com.himanshu.bike_network_list.app.BikeNetworksApp"
         android:theme="@style/Theme.DeviceList">
         <activity
-            android:name="com.himanshu.devicelist.presentation.view.MainActivity"
+            android:name="com.himanshu.bike_network_list.presentation.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
