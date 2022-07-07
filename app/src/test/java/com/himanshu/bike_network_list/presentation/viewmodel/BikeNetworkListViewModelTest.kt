@@ -26,7 +26,7 @@ class BikeNetworkListViewModelTest {
     var rule = InstantTaskExecutorRule()
 
     lateinit var useCase: GetBikeNetworkListUseCase
-    lateinit var mapperModel: BikeNetworkUIModelMapper
+    lateinit var modelMapper: BikeNetworkUIModelMapper
 
     private var testSingle: Single<List<BikeNetworkEntity>>? = null
     private var testSingleFilterWithData: Single<List<BikeNetworkEntity>>? = null
@@ -37,7 +37,7 @@ class BikeNetworkListViewModelTest {
     fun setup() {
         MockitoAnnotations.openMocks(this)
         useCase = Mockito.mock(GetBikeNetworkListUseCase::class.java)
-        mapperModel = BikeNetworkUIModelMapper()
+        modelMapper = BikeNetworkUIModelMapper()
 
         val bikeNetwork1 = BikeNetworkEntity("1", "Eagle Network", "url", "City1", "Country1")
         val bikeNetwork2 = BikeNetworkEntity("2", "Angle  Network", "url", "City1", "Country1")
@@ -71,7 +71,7 @@ class BikeNetworkListViewModelTest {
     @Test
     fun fetchBikeNetworkDataSuccess() {
         `when`(useCase()).thenReturn(testSingle)
-        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, mapperModel)
+        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, modelMapper)
         bikeNetworkListViewModel.fetchBikeNetworkData()
         Assert.assertEquals(4, bikeNetworkListViewModel.bikeNetworkUIList.value?.size)
         Assert.assertEquals(false, bikeNetworkListViewModel.bikeNetworkListLoadError.value)
@@ -82,7 +82,7 @@ class BikeNetworkListViewModelTest {
     fun fetchDevicesDataFailure() {
         errorSingle = Single.error(Throwable())
         `when`(useCase()).thenReturn(errorSingle)
-        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, mapperModel)
+        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, modelMapper)
         bikeNetworkListViewModel.fetchBikeNetworkData()
         Assert.assertEquals(false, bikeNetworkListViewModel.loading.value)
         Assert.assertEquals(true, bikeNetworkListViewModel.bikeNetworkListLoadError.value)
@@ -91,7 +91,7 @@ class BikeNetworkListViewModelTest {
     @Test
     fun filterListDataFound() {
         `when`(useCase()).thenReturn(testSingle)
-        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, mapperModel)
+        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, modelMapper)
         bikeNetworkListViewModel.fetchBikeNetworkData()
         bikeNetworkListViewModel.filterList("Ang")
         Assert.assertEquals(1, bikeNetworkListViewModel.bikeNetworkUIList.value?.size)
@@ -102,7 +102,7 @@ class BikeNetworkListViewModelTest {
     @Test
     fun filterListDataNotFound() {
         `when`(useCase()).thenReturn(testSingle)
-        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, mapperModel)
+        val bikeNetworkListViewModel = BikeNetworkListViewModel(useCase, modelMapper)
         bikeNetworkListViewModel.fetchBikeNetworkData()
         bikeNetworkListViewModel.filterList("Delhi")
         Assert.assertEquals(0, bikeNetworkListViewModel.bikeNetworkUIList.value?.size)
