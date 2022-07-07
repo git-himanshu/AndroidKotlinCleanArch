@@ -54,21 +54,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText!!.isNotEmpty()) {
-                    viewModel.filterList(newText)
-                } else {
-                    viewModel.fetchBikeNetworkData()
-                }
+                viewModel.filterList(newText!!)
                 return true
             }
 
         })
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
 
     private fun observeViewModel() {
-        viewModel.bikeNetworkList.observe(this) { networks ->
+        viewModel.bikeNetworkUIList.observe(this) { networks ->
             networks.let {
                 bikeNetworkListAdapter.updateMobileList(it)
                 bikeNetworkList.visibility = View.VISIBLE

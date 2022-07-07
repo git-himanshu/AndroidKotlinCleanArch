@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
 
-class GetBikeNetworkEntityListUseCaseTest {
+class GetBikeNetworkListUseCaseTest {
     @get:Rule
     var rule = InstantTaskExecutorRule()
 
@@ -46,7 +46,7 @@ class GetBikeNetworkEntityListUseCaseTest {
 
     @Before
     fun setupRxSchedulers() {
-        var immediate = object : Scheduler() {
+        val immediate = object : Scheduler() {
             override fun scheduleDirect(run: Runnable?, delay: Long, unit: TimeUnit?): Disposable {
                 return super.scheduleDirect(run, 0, unit)
             }
