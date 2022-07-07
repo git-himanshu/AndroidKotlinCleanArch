@@ -32,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 def lifeCycleExtensionsVersion = '1.1.1'
@@ -59,6 +64,7 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
@@ -70,7 +76,8 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionsVersion"
 
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.8'
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
     testImplementation 'android.arch.core:core-testing:1.1.1'
 
