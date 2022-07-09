@@ -1,7 +1,7 @@
 package com.himanshu.bike_network_list.network.di
 
 import com.himanshu.bike_network_list.network.BASE_URL
-import com.himanshu.bike_network_list.network.BikeNetworkApi
+import com.himanshu.bike_network_list.data.datasource.remote_datasource.BikeNetworkApi
 import com.himanshu.bike_network_list.network.ErrorInterceptor
 import dagger.Module
 import dagger.Provides

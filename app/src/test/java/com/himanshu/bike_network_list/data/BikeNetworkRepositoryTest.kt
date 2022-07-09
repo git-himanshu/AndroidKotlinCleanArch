@@ -5,7 +5,7 @@ import com.himanshu.bike_network_list.data.model_mapper.BikeNetworkRemoteDataMap
 import com.himanshu.bike_network_list.data.repository.BikeNetworkRepository
 import com.himanshu.bike_network_list.domain.entity.BikeNetworkEntity
 import com.himanshu.bike_network_list.network.BikeNetworkDto
-import com.himanshu.bike_network_list.network.BikeNetworkRemoteDataSource
+import com.himanshu.bike_network_list.data.datasource.remote_datasource.BikeNetworkRemoteDataSource
 import com.himanshu.bike_network_list.network.Location
 import io.reactivex.Scheduler
 import io.reactivex.Single
